@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 4</title>
+</head>
+<body>
+
+<script>
+
+    var Vehicle = function (type) {
+        Vehicle.VehicleCount++;
+        this.type = type;
+    }
+
+    Vehicle.VehicleCount = 0;
+
+    Vehicle.prototype.drive = function () {
+        console.log("Vehicle is Driving.");
+    };
+
+    var vehicle = new Vehicle('Toyota');
+
+    //console.log(vehicle);
+
+    function Car(type) {
+        Vehicle.call(this, type);
+    }
+
+    Car.prototype = Object.create(Vehicle.prototype);
+
+    Car.prototype.constructor = Car;
+
+    Car.prototype.balanceWheels = function () {
+        console.log('Wheels are Balanced.');
+    }
+
+    var car = new Car('Nissan');
+
+    car.balanceWheels();
+
+    car.drive();
+
+    console.log(car.type, Vehicle.VehicleCount);
+
+
+
+
+</script>
+
+</body>
+</html>
