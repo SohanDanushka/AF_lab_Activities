@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript_1.2</title>
+</head>
+<body>
+
+<script>
+    function Vehicle(type) {
+        Vehicle.INSTENCE_COUNT++;
+        this.type = type;
+        //  this.type = 'Toyota';
+    }
+
+    var vehicle = new Vehicle();
+
+    function Car() {
+
+    }
+    Car.prototype = Object.create(Vehicle.prototype);
+
+    Car.prototype.constructor = Car;
+
+    var car = new Car();
+
+    console.log(vehicle);
+
+    Vehicle.prototype.getType = function () {
+        return this.type;
+    };
+
+    Vehicle.INSTENCE_COUNT = 0;
+
+    function Car(type) {
+        Vehicle.call(this.type);
+    }
+
+ //   var vehicle = new Vehicle();
+  //  console.log(vehicle.getType());
+
+    //  console.log(vehicle);
+
+    var car =new Car('Toyota');
+    var car2 =new Car('Toyota');
+    var car3 =new Car('Toyota');
+
+ //   console.log(car.getType());
+
+    console.log(Vehicle.INSTENCE_COUNT);
+
+</script>
+
+</body>
+</html>

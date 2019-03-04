@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java_Script</title>
+</head>
+<body>
+
+<script>
+        function Vehicle(type) {
+            this.type = type;
+          //  this.type = 'Toyota';
+        }
+
+        var vehicle = new Vehicle();
+
+        function Car() {
+
+        }
+        Car.prototype = Object.create(Vehicle.prototype);
+
+        Car.prototype.constructor = Car;
+
+        var car = new Car();
+
+        console.log(vehicle);
+
+        Vehicle.prototype.getType = function () {
+            return this.type;
+        };
+
+        function Car(type) {
+            Vehicle.call(this.type);
+        }
+
+        var vehicle = new Vehicle();
+        console.log(vehicle.getType());
+
+      //  console.log(vehicle);
+
+        var car =new Car('Toyota');
+
+</script>
+
+</body>
+</html>
